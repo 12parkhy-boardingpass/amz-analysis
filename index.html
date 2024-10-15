@@ -1,0 +1,119 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Price and Review Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  </head>
+  <body>
+    <h1>Price and Review Tracker</h1>
+
+    <input type="file" id="csvFileInput" accept=".csv" />
+
+    <h2>[Entire data]</h2>
+    <div>
+      <label for="startDateParsedData">Start Date:</label>
+      <input type="date" id="startDateParsedData" />
+      <label for="endDateParsedData">End Date:</label>
+      <input type="date" id="endDateParsedData" />
+      <button id="filterParsedDataByDateBtn">Filter Parsed Data by Date</button>
+    </div>
+
+    <input
+      type="text"
+      id="searchParsedData"
+      placeholder="Search by ASIN or Title..."
+    />
+    <div id="parsedDataStatusFilterContainer">
+      <label>
+        <input type="checkbox" class="status-filter" value="korean" checked />
+        Korean
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          class="status-filter"
+          value="not korean"
+          checked
+        />
+        Not Korean
+      </label>
+      <label>
+        <input type="checkbox" class="status-filter" value="unknown" checked />
+        Unknown
+      </label>
+    </div>
+    <table id="parsedDataTable">
+      <thead>
+        <tr>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th id="priceHeader" class="sortable" data-sort="">Price</th>
+          <th id="reviewsHeader" class="sortable" data-sort="">Reviews</th>
+          <th>Status</th>
+          <th>Search Query</th>
+          <th>Currency Symbol</th>
+          <th>Currency</th>
+          <th>Date</th>
+          <th>Time Type</th>
+          <th>Categories</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+    </table>
+
+    <div id="parsedDataPagination"></div>
+
+    <div class="custom-divider"></div>
+
+    <h2>[Price and Review Changes]</h2>
+
+    <div>
+      <label for="startDateChanges">Start Date:</label>
+      <input type="date" id="startDateChanges" />
+      <label for="endDateChanges">End Date:</label>
+      <input type="date" id="endDateChanges" />
+      <button id="showChangesBtn">Show Price and Review Changes</button>
+    </div>
+
+    <input
+      type="text"
+      id="searchPriceReview"
+      placeholder="Search by ASIN or Title..."
+    />
+    <table id="changesTable">
+      <thead>
+        <tr>
+          <th>ASIN</th>
+          <th>Title</th>
+          <th id="priceChangeHeader" class="sortable" data-sort="">
+            Price Change (%)
+          </th>
+          <th id="reviewsChangeHeader" class="sortable" data-sort="">
+            Reviews Change (%)
+          </th>
+          <th>Period</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+    </table>
+
+    <div id="changePagination"></div>
+
+    <!-- Modal for Line Graph -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>Price and Reviews Changes</h2>
+        <canvas id="myChart" width="400" height="200"></canvas>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

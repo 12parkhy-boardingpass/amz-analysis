@@ -1,0 +1,238 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 20px;
+}
+
+h1,
+h2 {
+  color: #343a40;
+}
+
+/* Flex container for Parsed Data and Price & Review Changes sections */
+.section-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+/* Each section styled as a flex child */
+section {
+  flex: 1;
+  min-width: 300px; /* Makes sure sections don't get too small on small screens */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+th,
+td {
+  border: 1px solid #dee2e6;
+  text-align: left;
+  padding: 12px 15px;
+}
+
+th {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #e9ecef;
+}
+
+/* Pagination container */
+#parsedDataPagination {
+  display: flex;
+  justify-content: center; /* Centering pagination buttons */
+  margin: 20px 0; /* Spacing around pagination */
+  gap: 10px;
+}
+
+#changePagination {
+  display: flex;
+  justify-content: center; /* Centering pagination buttons */
+  margin: 20px 0; /* Spacing around pagination */
+  gap: 10px;
+}
+
+/* General pagination button styling */
+.page-button,
+.page-nav {
+  margin: 0 10px; /* Increased margin for better spacing between buttons */
+  padding: 8px 15px; /* Consistent padding */
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff; /* Primary button color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s; /* Added transform for hover effect */
+}
+
+.page-button:hover,
+.page-nav:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: translateY(-1px); /* Lift effect */
+}
+
+.page-button.active,
+.page-nav.active {
+  font-weight: bold;
+  background-color: #0056b3; /* Active button color */
+}
+
+/* Specific styling for navigation buttons */
+.page-nav {
+  font-weight: normal; /* Normal weight for navigation buttons */
+}
+
+.page-nav:first-child,
+.page-nav:last-child {
+  margin: 0 15px; /* Extra margin for the first and last buttons */
+}
+
+/* Button styling for general buttons */
+button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #28a745;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Modal styling */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 80%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  .section-container {
+    flex-direction: column; /* Stack sections vertically on smaller screens */
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+
+  th,
+  td {
+    padding: 10px;
+  }
+
+  .page-button,
+  .page-nav {
+    padding: 4px 8px; /* Smaller button size */
+  }
+
+  button {
+    padding: 6px 12px; /* Smaller button size */
+  }
+}
+
+.custom-divider {
+  width: 100%;
+  height: 2px; /* Thickness of the line */
+  background-color: #a3a3a3; /* Line color */
+  margin: 20px 0; /* Space around the divider */
+}
+
+.highlight {
+  background-color: yellow; /* Change to your preferred highlight color */
+  font-weight: bold; /* Optional: make the text bold */
+}
+
+#changesTable th.sortable {
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px; /* Add space for the arrow */
+  /* position: absolute; */
+  /* right: 5px;   */
+  /* font-size: 12px;   */
+  /* color: #ff00a2;   */
+}
+
+#changesTable th.sortable[data-sort="asc"]:after {
+  content: "\25B2";
+}
+
+#changesTable th.sortable[data-sort="desc"]:after {
+  content: "\25BC";
+}
+
+#changesTable th.sortable:hover {
+  /* background-color: #f1f1f1;   */
+}
+
+#parsedDataTable th.sortable {
+  cursor: pointer;
+  position: relative;
+  padding-right: 20px; /* Add space for the arrow */
+}
+
+#parsedDataTable th.sortable[data-sort="asc"]:after {
+  content: "\25B2"; /* Up arrow for ascending sort */
+}
+
+#parsedDataTable th.sortable[data-sort="desc"]:after {
+  content: "\25BC"; /* Down arrow for descending sort */
+}
+
+#parsedDataTable th.sortable:hover {
+  /* background-color: #f1f1f1;   */
+}
