@@ -1,3 +1,5 @@
+let parsedData = [];
+
 let searchDataForEntire = "";
 let searchDataForPriceReviewChanges = "";
 let priceReviewChangesData = [];
