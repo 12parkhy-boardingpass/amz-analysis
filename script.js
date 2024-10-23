@@ -180,10 +180,17 @@ function renderChangesTable(searchData, sortData = null) {
     filteredPriceReviewData.sort((a, b) => {
       let comparison = 0;
 
+      // Function to handle N/A values
+      const parseChange = (value) => {
+        if (value === "N/A") return -Infinity; // Treat "N/A" as the lowest value
+        return parseFloat(value);
+      };
+
       if (sortData.sortType === "price-change") {
-        comparison = parseFloat(a.priceChange) - parseFloat(b.priceChange);
+        comparison = parseChange(a.priceChange) - parseChange(b.priceChange);
       } else if (sortData.sortType === "reviews-change") {
-        comparison = parseFloat(a.reviewsChange) - parseFloat(b.reviewsChange);
+        comparison =
+          parseChange(a.reviewsChange) - parseChange(b.reviewsChange);
       }
 
       return sortData.sortOrder === "asc" ? comparison : -comparison;
