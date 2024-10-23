@@ -644,6 +644,14 @@ function parseCSV(data) {
           endDate: endDateForParsedData,
         }
       );
+
+      priceReviewChangesData = [];
+      currentChangesPage = 1;
+
+      renderChangesTable(currentSearchPriceReview, {
+        sortType: priceReviewChangesSortType,
+        sortOrder: priceReviewChangesSortOrder,
+      });
     },
   });
 }
